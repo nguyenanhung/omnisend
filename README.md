@@ -19,6 +19,16 @@ composer require nguyenanhung/omnisend
 ## Example
 
 ```php
+<?php
+/**
+ * Project omnisend
+ * Created by PhpStorm
+ * User: 713uk13m <dev@nguyenanhung.com>
+ * Copyright: 713uk13m <dev@nguyenanhung.com>
+ * Date: 09/09/2021
+ * Time: 10:32
+ */
+ 
 use nguyenanhung\Omnisend\Services\Omnisend;
 
 require_once __DIR__ . 'vendor/autoload.php';
