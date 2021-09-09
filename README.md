@@ -1,5 +1,11 @@
 # Omnisend
 
+[![Latest Stable Version](https://poser.pugx.org/nguyenanhung/omnisend/v/stable)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![Total Downloads](https://poser.pugx.org/nguyenanhung/omnisend/downloads)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![Latest Unstable Version](https://poser.pugx.org/nguyenanhung/omnisend/v/unstable)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![composer.lock](https://poser.pugx.org/nguyenanhung/omnisend/composerlock)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![License](https://poser.pugx.org/nguyenanhung/omnisend/license)](https://packagist.org/packages/nguyenanhung/omnisend)
+
 Omnisend: Ecommerce Email Marketing and SMS Platform
 
 ## Installation
