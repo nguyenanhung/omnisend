@@ -1,4 +1,4 @@
-# Helper
+# Example
 
 ## Contact
 
