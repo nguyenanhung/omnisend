@@ -10,7 +10,7 @@
         "marketing"
     ],
     "homepage": "https://github.com/nguyenanhung/omnisend",
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Nguyen An Hung",
