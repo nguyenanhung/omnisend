@@ -1,0 +1,36 @@
+{
+    "name": "nguyenanhung/omnisend",
+    "type": "library",
+    "description": "Omnisend: Ecommerce Email Marketing and SMS Platform",
+    "keywords": [
+        "php",
+        "omnisend",
+        "sms",
+        "email",
+        "marketing"
+    ],
+    "homepage": "https://github.com/nguyenanhung/omnisend",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nguyen An Hung",
+            "email": "dev@nguyenanhung.com",
+            "homepage": "https://nguyenanhung.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "omnisend/php-sdk": "^1.2",
+        "nguyenanhung/my-debug": "^3.0",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "nguyenanhung\\Omnisend\\": "src/"
+        },
+        "files": [
+            "helpers/helpers.php"
+        ]
+    }
+}
