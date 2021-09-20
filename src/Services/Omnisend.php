@@ -202,7 +202,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/31/2021 18:26
      */
-    public function init()
+    public function init(): ?OmniSendSDK
     {
         try {
             $options = ['timeout' => 30, 'verifySSL' => false];
@@ -240,15 +240,15 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 $data = $omnisend->get($endpoint . '/' . $id, $params);
             } else {
                 $data = $omnisend->get($endpoint, $params);
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             $data = $omnisend->post($endpoint, $body);
-        } elseif ($this->method == 'PATCH') {
+        } elseif ($this->method === 'PATCH') {
             $data = $omnisend->patch($endpoint . '/' . $id, $body);
         } else {
             $data = [];
@@ -258,12 +258,12 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
 
     }
 
@@ -289,7 +289,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 // Get info
                 $data = $omnisend->get($endpoint . '/' . $id, $params);
@@ -297,14 +297,14 @@ class Omnisend extends BaseCore implements OmnisendInterface
                 // Get list
                 $data = $omnisend->get($endpoint, $params);
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             // Create new item
             if (!empty($id)) {
                 $data = $omnisend->post($endpoint . '/' . $id . '/products', $body);
             } else {
                 $data = $omnisend->post($endpoint, $body);
             }
-        } elseif ($this->method == 'PUT') {
+        } elseif ($this->method === 'PUT') {
             if ($id && $productId) {
                 // Replace product
                 $data = $omnisend->put($endpoint . '/' . $id . '/products/' . $productId, $body);
@@ -312,14 +312,14 @@ class Omnisend extends BaseCore implements OmnisendInterface
                 // Replace existing item
                 $data = $omnisend->put($endpoint . '/' . $id, $body);
             }
-        } elseif ($this->method == 'PATCH') {
+        } elseif ($this->method === 'PATCH') {
             if (!empty($id) && !empty($productId)) {
                 $data = $omnisend->patch($endpoint . '/' . $id . '/products/' . $productId, $body);
             } else {
                 // Update item
                 $data = $omnisend->patch($endpoint . '/' . $id, $body);
             }
-        } elseif ($this->method == 'DELETE') {
+        } elseif ($this->method === 'DELETE') {
             if (!empty($id) && !empty($productId)) {
                 // Remove product from cart
                 $data = $omnisend->delete($endpoint . '/' . $id . '/products/' . $productId);
@@ -335,12 +335,12 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
     }
 
     /**
@@ -364,7 +364,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 // Get info
                 $data = $omnisend->get($endpoint . '/' . $id, $params);
@@ -372,16 +372,16 @@ class Omnisend extends BaseCore implements OmnisendInterface
                 // Get list
                 $data = $omnisend->get($endpoint, $params);
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             // Create new item
             $data = $omnisend->post($endpoint, $body);
-        } elseif ($this->method == 'PUT') {
+        } elseif ($this->method === 'PUT') {
             // Replace existing item
             $data = $omnisend->put($endpoint . '/' . $id, $body);
-        } elseif ($this->method == 'PATCH') {
+        } elseif ($this->method === 'PATCH') {
             // Update order status
             $data = $omnisend->patch($endpoint . '/' . $id, $body);
-        } elseif ($this->method == 'DELETE') {
+        } elseif ($this->method === 'DELETE') {
             // Delete item
             $data = $omnisend->delete($endpoint . '/' . $id);
         } else {
@@ -392,12 +392,12 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
     }
 
     /**
@@ -422,7 +422,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 if (!empty($contactId)) {
                     // Get campaign's contact
@@ -439,10 +439,10 @@ class Omnisend extends BaseCore implements OmnisendInterface
                     $data = $omnisend->get($endpoint, $params);
                 }
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             // Start sending campaign emails
             $data = $omnisend->post($endpoint . '/' . $id . '/actions/start', $body);
-        } elseif ($this->method == 'DELETE') {
+        } elseif ($this->method === 'DELETE') {
             // Delete item
             $data = $omnisend->delete($endpoint . '/' . $id);
         } else {
@@ -453,12 +453,12 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
     }
 
     /**
@@ -482,7 +482,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 // Get info
                 $data = $omnisend->get($endpoint . '/' . $id, $params);
@@ -490,13 +490,13 @@ class Omnisend extends BaseCore implements OmnisendInterface
                 // Get list
                 $data = $omnisend->get($endpoint, $params);
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             // Create new item
             $data = $omnisend->post($endpoint, $body);
-        } elseif ($this->method == 'PUT') {
+        } elseif ($this->method === 'PUT') {
             // Replace existing item
             $data = $omnisend->put($endpoint . '/' . $id, $body);
-        } elseif ($this->method == 'DELETE') {
+        } elseif ($this->method === 'DELETE') {
             // Delete item
             $data = $omnisend->delete($endpoint . '/' . $id);
         } else {
@@ -507,12 +507,12 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
     }
 
     /**
@@ -536,7 +536,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 // Get info
                 $data = $omnisend->get($endpoint . '/' . $id, $params);
@@ -544,13 +544,13 @@ class Omnisend extends BaseCore implements OmnisendInterface
                 // Get list
                 $data = $omnisend->get($endpoint, $params);
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             // Create new item
             $data = $omnisend->post($endpoint, $body);
-        } elseif ($this->method == 'PUT') {
+        } elseif ($this->method === 'PUT') {
             // Replace existing item
             $data = $omnisend->put($endpoint . '/' . $id, $body);
-        } elseif ($this->method == 'DELETE') {
+        } elseif ($this->method === 'DELETE') {
             // Delete item
             $data = $omnisend->delete($endpoint . '/' . $id);
         } else {
@@ -561,12 +561,12 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
     }
 
     /**
@@ -590,7 +590,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 // Get info
                 $data = $omnisend->get($endpoint . '/' . $id, $params);
@@ -598,7 +598,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
                 // Get list
                 $data = $omnisend->get($endpoint, $params);
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             if (!empty($id)) {
                 // Trigger custom event
                 $data = $omnisend->post($endpoint . '/' . $id, $body);
@@ -614,12 +614,12 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
     }
 
     /**
@@ -663,7 +663,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
         if ($omnisend === null) {
             return null;
         }
-        if ($this->method == 'GET') {
+        if ($this->method === 'GET') {
             if (!empty($id)) {
                 // Get info
                 if ($item) {
@@ -679,13 +679,13 @@ class Omnisend extends BaseCore implements OmnisendInterface
                 // Get list
                 $data = $omnisend->get($endpoint, $params);
             }
-        } elseif ($this->method == 'POST') {
+        } elseif ($this->method === 'POST') {
             // Create new item
             $data = $omnisend->post($endpoint, $body);
-        } elseif ($this->method == 'PUT') {
+        } elseif ($this->method === 'PUT') {
             // Replace existing item
             $data = $omnisend->put($endpoint . '/' . $id, $body);
-        } elseif ($this->method == 'DELETE') {
+        } elseif ($this->method === 'DELETE') {
             // Delete item
             $data = $omnisend->delete($endpoint . '/' . $id);
         } else {
@@ -696,11 +696,11 @@ class Omnisend extends BaseCore implements OmnisendInterface
             $this->logger->debug(ucfirst(__FUNCTION__), 'Request Response for Method : ' . $this->method . ' - ' . json_encode($data));
 
             return $data;
-        } else {
-            $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
-
-            //there was an error
-            return $omnisend->lastError();
         }
+
+        $this->logger->error(ucfirst(__FUNCTION__), 'Request Response has Error for Method : ' . $this->method . ' - ' . json_encode($omnisend->lastError()));
+
+        //there was an error
+        return $omnisend->lastError();
     }
 }
