@@ -4,6 +4,11 @@
 
 Omnisend: Ecommerce Email Marketing and SMS Platform
 
+## Version
+
+- [x] `v1.x` Support all PHP Version `>=5.6`
+- [x] `v2.x` Support all PHP Version `>=7.0`
+
 ## Installation
 
 Simple installation with Composer

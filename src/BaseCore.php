@@ -25,17 +25,17 @@ use nguyenanhung\Omnisend\Traits\Version;
  */
 class BaseCore implements Environment
 {
-    public const EXIT_SUCCESS            = 0; // no errors
-    public const EXIT_ERROR              = 1; // generic error
-    public const EXIT_ACCESS_DENIED      = 2; // access denied
-    public const EXIT_CONFIG             = 3; // configuration error
-    public const EXIT_UNKNOWN_FILE       = 4; // file not found
-    public const EXIT_UNKNOWN_CLASS      = 5; // unknown class
-    public const EXIT_UNKNOWN_METHOD     = 6; // unknown class member
-    public const EXIT_USER_INPUT         = 7; // invalid user input
-    public const EXIT_DATABASE           = 8; // database error
-    public const EXIT_UNKNOWN_REQUEST    = 9; // invalid request
-    public const EXIT_REDIRECT_TO_RETURN = 10; // Return to Return URL
+    const EXIT_SUCCESS            = 0; // no errors
+    const EXIT_ERROR              = 1; // generic error
+    const EXIT_ACCESS_DENIED      = 2; // access denied
+    const EXIT_CONFIG             = 3; // configuration error
+    const EXIT_UNKNOWN_FILE       = 4; // file not found
+    const EXIT_UNKNOWN_CLASS      = 5; // unknown class
+    const EXIT_UNKNOWN_METHOD     = 6; // unknown class member
+    const EXIT_USER_INPUT         = 7; // invalid user input
+    const EXIT_DATABASE           = 8; // database error
+    const EXIT_UNKNOWN_REQUEST    = 9; // invalid request
+    const EXIT_REDIRECT_TO_RETURN = 10; // Return to Return URL
 
     use Version, SDKConfig, InputData, Response;
 
@@ -68,7 +68,7 @@ class BaseCore implements Environment
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct(array $options = array())
+    public function __construct($options = array())
     {
         $this->options = $options;
         $this->logger  = new Logger();

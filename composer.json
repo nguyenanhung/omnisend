@@ -20,10 +20,10 @@
         }
     ],
     "require": {
-        "php": "^7.1 || ^8.0",
+        "php": ">=5.6",
+        "ext-json": "*",
         "omnisend/php-sdk": "^1.2",
-        "nguyenanhung/my-debug": "^3.0",
-        "ext-json": "*"
+        "nguyenanhung/my-debug": "^2.0"
     },
     "autoload": {
         "psr-4": {

@@ -62,10 +62,8 @@ trait Response
         if ($this->responseIsJson === TRUE) {
             return json_encode($this->response);
         }
-        if ($this->responseIsObject === TRUE) {
-            if (is_array($this->response)) {
-                return arrayToObject($this->response);
-            }
+        if (($this->responseIsObject === true) && is_array($this->response)) {
+            return arrayToObject($this->response);
         }
 
         return $this->response;

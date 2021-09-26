@@ -19,11 +19,11 @@ namespace nguyenanhung\Omnisend;
  */
 interface Environment
 {
-    public const VERSION      = '1.0.2';
-    public const AUTHOR_NAME  = 'Hung Nguyen';
-    public const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
-    public const AUTHOR_URL   = 'https://nguyenanhung.com';
-    public const ENCODING     = 'UTF-8';
+    const VERSION      = '1.0.3';
+    const AUTHOR_NAME  = 'Hung Nguyen';
+    const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
+    const AUTHOR_URL   = 'https://nguyenanhung.com';
+    const ENCODING     = 'UTF-8';
 
     /**
      * Function getVersion

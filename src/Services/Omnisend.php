@@ -21,7 +21,7 @@ use nguyenanhung\Omnisend\BaseCore;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class Omnisend extends BaseCore implements OmnisendInterface
+class Omnisend extends BaseCore
 {
     /** @var string $apiKey */
     protected $apiKey;
@@ -37,7 +37,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct(array $options = array())
+    public function __construct($options = array())
     {
         parent::__construct($options);
         $this->logger->setLoggerSubPath(__CLASS__);
@@ -53,7 +53,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 58:02
      */
-    public function setApiKey($key): Omnisend
+    public function setApiKey($key)
     {
         $this->apiKey = $key;
 
@@ -68,7 +68,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 58:10
      */
-    public function getApiKey(): string
+    public function getApiKey()
     {
         return $this->apiKey;
     }
@@ -81,7 +81,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/08/2021 39:16
      */
-    public function getMethod(): string
+    public function getMethod()
     {
         return $this->method;
     }
@@ -96,7 +96,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/08/2021 40:04
      */
-    public function setMethod(string $method = 'POST'): Omnisend
+    public function setMethod($method = 'POST')
     {
         $method       = strtoupper($method);
         $this->method = $method;
@@ -112,7 +112,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:17
      */
-    public function withPostRequest(): Omnisend
+    public function withPostRequest()
     {
         $this->method = 'POST';
 
@@ -127,7 +127,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:12
      */
-    public function withGetRequest(): Omnisend
+    public function withGetRequest()
     {
         $this->method = 'GET';
 
@@ -142,7 +142,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:09
      */
-    public function withPutRequest(): Omnisend
+    public function withPutRequest()
     {
         $this->method = 'PUT';
 
@@ -157,7 +157,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:05
      */
-    public function withPatchRequest(): Omnisend
+    public function withPatchRequest()
     {
         $this->method = 'PATCH';
 
@@ -172,7 +172,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:02
      */
-    public function withDeleteRequest(): Omnisend
+    public function withDeleteRequest()
     {
         $this->method = 'DELETE';
 
@@ -187,7 +187,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 10:59
      */
-    public function withOptionsRequest(): Omnisend
+    public function withOptionsRequest()
     {
         $this->method = 'OPTIONS';
 
@@ -202,7 +202,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/31/2021 18:26
      */
-    public function init(): ?OmniSendSDK
+    public function init()
     {
         try {
             $options = ['timeout' => 30, 'verifySSL' => false];
@@ -232,10 +232,10 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/contacts
      */
-    public function contracts(array $params = [], array $body = [])
+    public function contracts(array $params = array(), array $body = array())
     {
         $endpoint = 'contacts';
-        $id       = $params['contractId'] ?? null;
+        $id       = isset($params['contractId']) ? $params['contractId'] : null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -280,11 +280,11 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/carts
      */
-    public function carts(array $params = [], array $body = [])
+    public function carts($params = array(), $body = array())
     {
         $endpoint  = 'carts';
-        $id        = $params['cartId'] ?? null;
-        $productId = $params['productId'] ?? null;
+        $id        = isset($params['cartId']) ? $params['cartId'] : null;
+        $productId = isset($params['productId']) ? $params['productId'] : null;
         $omnisend  = $this->init();
         if ($omnisend === null) {
             return null;
@@ -356,10 +356,10 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/orders
      */
-    public function orders(array $params = [], array $body = [])
+    public function orders($params = array(), $body = array())
     {
         $endpoint = 'orders';
-        $id       = $params['orderId'] ?? null;
+        $id       = isset($params['orderId']) ? $params['orderId'] : null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -413,11 +413,11 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/campaigns
      */
-    public function campaigns(array $params = [], array $body = [])
+    public function campaigns($params = array(), $body = array())
     {
         $endpoint  = 'campaigns';
-        $id        = $params['campaignId'] ?? null;
-        $contactId = $params['contactId'] ?? null;
+        $id        = isset($params['campaignId']) ? $params['campaignId'] : null;
+        $contactId = isset($params['contactId']) ? $params['contactId'] : null;
         $omnisend  = $this->init();
         if ($omnisend === null) {
             return null;
@@ -431,13 +431,11 @@ class Omnisend extends BaseCore implements OmnisendInterface
                     // Get info
                     $data = $omnisend->get($endpoint . '/' . $id, $params);
                 }
+            } elseif (!empty($contactId)) {
+                $data = $omnisend->get($endpoint . '/' . $id . '/contacts/', $params);
             } else {
-                if (!empty($contactId)) {
-                    $data = $omnisend->get($endpoint . '/' . $id . '/contacts/', $params);
-                } else {
-                    // Get list
-                    $data = $omnisend->get($endpoint, $params);
-                }
+                // Get list
+                $data = $omnisend->get($endpoint, $params);
             }
         } elseif ($this->method === 'POST') {
             // Start sending campaign emails
@@ -474,10 +472,10 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/products
      */
-    public function products(array $params = [], array $body = [])
+    public function products($params = array(), $body = array())
     {
         $endpoint = 'products';
-        $id       = $params['productId'] ?? null;
+        $id       = isset($params['productId']) ? $params['productId'] : null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -528,10 +526,10 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/categories
      */
-    public function categories(array $params = [], array $body = [])
+    public function categories($params = array(), $body = array())
     {
         $endpoint = 'products';
-        $id       = $params['categoryId'] ?? null;
+        $id       = isset($params['categoryId']) ? $params['categoryId'] : null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -582,10 +580,10 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/events
      */
-    public function events(array $params = [], array $body = [])
+    public function events($params = array(), $body = array())
     {
         $endpoint = 'events';
-        $id       = $params['eventId'] ?? null;
+        $id       = isset($params['eventId']) ? $params['eventId'] : null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -635,7 +633,7 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/events
      */
-    public function event(array $params = [], array $body = [])
+    public function event($params = array(), $body = array())
     {
         return $this->events($params, $body);
     }
@@ -654,11 +652,11 @@ class Omnisend extends BaseCore implements OmnisendInterface
      *
      * @see      https://api-docs.omnisend.com/v3/batches
      */
-    public function batches(array $params = [], array $body = [], bool $item = false)
+    public function batches($params = array(), $body = array(), $item = false)
     {
         $endpoint = 'batches';
-        $id       = $params['batchId'] ?? null;
-        $itemId   = $params['itemId'] ?? null;
+        $id       = isset($params['batchId']) ? $params['batchId'] : null;
+        $itemId   = isset($params['itemId']) ? $params['itemId'] : null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
