@@ -205,7 +205,10 @@ class Omnisend extends BaseCore
     public function init()
     {
         try {
-            $options = ['timeout' => 30, 'verifySSL' => false];
+            $options = array(
+                'timeout'   => 30,
+                'verifySSL' => false
+            );
 
             $this->logger->debug(ucfirst(__FUNCTION__), 'Omnisend Init API Key: ' . $this->apiKey);
             $this->logger->debug(ucfirst(__FUNCTION__), 'Omnisend Init Options: ', $options);
@@ -251,7 +254,7 @@ class Omnisend extends BaseCore
         } elseif ($this->method === 'PATCH') {
             $data = $omnisend->patch($endpoint . '/' . $id, $body);
         } else {
-            $data = [];
+            $data = array();
         }
 
         if ($data) {
@@ -328,7 +331,7 @@ class Omnisend extends BaseCore
                 $data = $omnisend->delete($endpoint . '/' . $id);
             }
         } else {
-            $data = [];
+            $data = array();
         }
 
         if ($data) {
@@ -385,7 +388,7 @@ class Omnisend extends BaseCore
             // Delete item
             $data = $omnisend->delete($endpoint . '/' . $id);
         } else {
-            $data = [];
+            $data = array();
         }
 
         if ($data) {
@@ -424,15 +427,9 @@ class Omnisend extends BaseCore
         }
         if ($this->method === 'GET') {
             if (!empty($id)) {
-                if (!empty($contactId)) {
-                    // Get campaign's contact
-                    $data = $omnisend->get($endpoint . '/' . $id . '/contacts/' . $contactId, $params);
-                } else {
-                    // Get info
-                    $data = $omnisend->get($endpoint . '/' . $id, $params);
-                }
+                $data = !empty($contactId) ? $omnisend->get($endpoint . '/' . $id . '/contacts/' . $contactId, $params) : $omnisend->get($endpoint . '/' . $id, $params);
             } elseif (!empty($contactId)) {
-                $data = $omnisend->get($endpoint . '/' . $id . '/contacts/', $params);
+                $data = $omnisend->get($endpoint . '/' . $id . '/contacts', $params);
             } else {
                 // Get list
                 $data = $omnisend->get($endpoint, $params);
