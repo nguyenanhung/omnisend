@@ -68,7 +68,7 @@ class BaseCore implements Environment
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct($options = array())
+    public function __construct(array $options = array())
     {
         $this->options = $options;
         $this->logger  = new Logger();

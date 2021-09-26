@@ -12,7 +12,7 @@ if (!function_exists('arrayToObject')) {
      * Function arrayToObject
      *
      * @param array $array
-     * @param false $strToLower
+     * @param bool  $strToLower
      *
      * @return array|false|\stdClass
      * @author   : 713uk13m <dev@nguyenanhung.com>

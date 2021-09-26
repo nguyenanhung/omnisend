@@ -37,7 +37,7 @@ class Omnisend extends BaseCore
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct($options = array())
+    public function __construct(array $options = array())
     {
         parent::__construct($options);
         $this->logger->setLoggerSubPath(__CLASS__);
@@ -53,7 +53,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 58:02
      */
-    public function setApiKey($key)
+    public function setApiKey($key): Omnisend
     {
         $this->apiKey = $key;
 
@@ -68,7 +68,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 58:10
      */
-    public function getApiKey()
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }
@@ -81,7 +81,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/08/2021 39:16
      */
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->method;
     }
@@ -96,7 +96,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/08/2021 40:04
      */
-    public function setMethod($method = 'POST')
+    public function setMethod(string $method = 'POST'): Omnisend
     {
         $method       = strtoupper($method);
         $this->method = $method;
@@ -112,7 +112,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:17
      */
-    public function withPostRequest()
+    public function withPostRequest(): Omnisend
     {
         $this->method = 'POST';
 
@@ -127,7 +127,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:12
      */
-    public function withGetRequest()
+    public function withGetRequest(): Omnisend
     {
         $this->method = 'GET';
 
@@ -142,7 +142,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:09
      */
-    public function withPutRequest()
+    public function withPutRequest(): Omnisend
     {
         $this->method = 'PUT';
 
@@ -157,7 +157,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:05
      */
-    public function withPatchRequest()
+    public function withPatchRequest(): Omnisend
     {
         $this->method = 'PATCH';
 
@@ -172,7 +172,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 11:02
      */
-    public function withDeleteRequest()
+    public function withDeleteRequest(): Omnisend
     {
         $this->method = 'DELETE';
 
@@ -187,7 +187,7 @@ class Omnisend extends BaseCore
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 10:59
      */
-    public function withOptionsRequest()
+    public function withOptionsRequest(): Omnisend
     {
         $this->method = 'OPTIONS';
 
@@ -238,7 +238,7 @@ class Omnisend extends BaseCore
     public function contracts(array $params = array(), array $body = array())
     {
         $endpoint = 'contacts';
-        $id       = isset($params['contractId']) ? $params['contractId'] : null;
+        $id       = $params['contractId'] ?? null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -283,11 +283,11 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/carts
      */
-    public function carts($params = array(), $body = array())
+    public function carts(array $params = array(), array $body = array())
     {
         $endpoint  = 'carts';
-        $id        = isset($params['cartId']) ? $params['cartId'] : null;
-        $productId = isset($params['productId']) ? $params['productId'] : null;
+        $id        = $params['cartId'] ?? null;
+        $productId = $params['productId'] ?? null;
         $omnisend  = $this->init();
         if ($omnisend === null) {
             return null;
@@ -359,10 +359,10 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/orders
      */
-    public function orders($params = array(), $body = array())
+    public function orders(array $params = array(), array $body = array())
     {
         $endpoint = 'orders';
-        $id       = isset($params['orderId']) ? $params['orderId'] : null;
+        $id       = $params['orderId'] ?? null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -416,11 +416,11 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/campaigns
      */
-    public function campaigns($params = array(), $body = array())
+    public function campaigns(array $params = array(), array $body = array())
     {
         $endpoint  = 'campaigns';
-        $id        = isset($params['campaignId']) ? $params['campaignId'] : null;
-        $contactId = isset($params['contactId']) ? $params['contactId'] : null;
+        $id        = $params['campaignId'] ?? null;
+        $contactId = $params['contactId'] ?? null;
         $omnisend  = $this->init();
         if ($omnisend === null) {
             return null;
@@ -469,10 +469,10 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/products
      */
-    public function products($params = array(), $body = array())
+    public function products(array $params = array(), array $body = array())
     {
         $endpoint = 'products';
-        $id       = isset($params['productId']) ? $params['productId'] : null;
+        $id       = $params['productId'] ?? null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -523,10 +523,10 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/categories
      */
-    public function categories($params = array(), $body = array())
+    public function categories(array $params = array(), array $body = array())
     {
         $endpoint = 'products';
-        $id       = isset($params['categoryId']) ? $params['categoryId'] : null;
+        $id       = $params['categoryId'] ?? null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -577,10 +577,10 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/events
      */
-    public function events($params = array(), $body = array())
+    public function events(array $params = array(), array $body = array())
     {
         $endpoint = 'events';
-        $id       = isset($params['eventId']) ? $params['eventId'] : null;
+        $id       = $params['eventId'] ?? null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
@@ -630,7 +630,7 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/events
      */
-    public function event($params = array(), $body = array())
+    public function event(array $params = array(), array $body = array())
     {
         return $this->events($params, $body);
     }
@@ -649,11 +649,11 @@ class Omnisend extends BaseCore
      *
      * @see      https://api-docs.omnisend.com/v3/batches
      */
-    public function batches($params = array(), $body = array(), $item = false)
+    public function batches(array $params = array(), array $body = array(), bool $item = false)
     {
         $endpoint = 'batches';
-        $id       = isset($params['batchId']) ? $params['batchId'] : null;
-        $itemId   = isset($params['itemId']) ? $params['itemId'] : null;
+        $id       = $params['batchId'] ?? null;
+        $itemId   = $params['itemId'] ?? null;
         $omnisend = $this->init();
         if ($omnisend === null) {
             return null;
