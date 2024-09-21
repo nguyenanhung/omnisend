@@ -1,6 +1,11 @@
 # Omnisend
 
-[![Latest Stable Version](http://poser.pugx.org/nguyenanhung/omnisend/v)](https://packagist.org/packages/nguyenanhung/omnisend) [![Total Downloads](http://poser.pugx.org/nguyenanhung/omnisend/downloads)](https://packagist.org/packages/nguyenanhung/omnisend) [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/omnisend/v/unstable)](https://packagist.org/packages/nguyenanhung/omnisend) [![License](http://poser.pugx.org/nguyenanhung/omnisend/license)](https://packagist.org/packages/nguyenanhung/omnisend) [![PHP Version Require](http://poser.pugx.org/nguyenanhung/omnisend/require/php)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![Latest Stable Version](https://img.shields.io/packagist/v/nguyenanhung/omnisend.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![Total Downloads](https://img.shields.io/packagist/dt/nguyenanhung/omnisend.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![Daily Downloads](https://img.shields.io/packagist/dd/nguyenanhung/omnisend.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/nguyenanhung/omnisend.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![License](https://img.shields.io/packagist/l/nguyenanhung/omnisend.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/omnisend)
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/nguyenanhung/omnisend/php)](https://packagist.org/packages/nguyenanhung/omnisend)
 
 Omnisend: Ecommerce Email Marketing and SMS Platform
 
